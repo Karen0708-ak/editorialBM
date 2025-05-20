@@ -15,7 +15,7 @@
         </tr>
     </thead>
     <tbody>
-        {% autorTemporal in autor %}
+        {% for autorTemporal in autor %}
             <tr>
                 <td>{{autorTemporal.id}}</td>
                 <td>{{autorTemporal.nombre}}</td>

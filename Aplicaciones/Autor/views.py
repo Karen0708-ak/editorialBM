@@ -17,7 +17,7 @@ def guardarAutor(request):
         )
     #mensaje de confirmacion
     messages.success(request,"Autor guardado exitosamente")
-    return redirect('inicioca')
+    return redirect('inicioau')
 def eliminarAutor(request,id_autor):
     autorEliminar = Autor.objects.get(id=id)
     autorEliminar.delete()

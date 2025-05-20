@@ -25,8 +25,8 @@ def eliminarAutor(request,id_autor):
     return redirect('inicioau')
 
 #editar
-def editarAutor(request,id):
-    autorEditar=Autor.objects.get(id=id)
+def editarAutor(request,id_autor):
+    autorEditar=Autor.objects.get(id_autor=id_autor)
     return render(request,"editarAutor.html",{'autorEditar':autorEditar})
 
 def procesarEdicionAutor(request):

@@ -19,7 +19,7 @@ def guardarAutor(request):
     messages.success(request,"Autor guardado exitosamente")
     return redirect('inicioau')
 def eliminarAutor(request,id_autor):
-    autorEliminar = Autor.objects.get(id=id)
+    autorEliminar = Autor.objects.get(id_autor=id_autor)
     autorEliminar.delete()
     messages.success(request,"Autor ELIMINADO exitosamente")
     return redirect('inicioau')
@@ -33,7 +33,7 @@ def procesarEdicionAutor(request):
     id_autor=request.POST["id_autor"]
     nombre = request.POST["nombre"]
     nacionalidad = request.POST["nacionalidad"]
-    autor=autor.objects.get(id=id_autor)
+    autor=Autor.objects.get(id_autor=id_autor)
     autor.nombre=nombre
     autor.nacionalidad=nacionalidad
     autor.save()

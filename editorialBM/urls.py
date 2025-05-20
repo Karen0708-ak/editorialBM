@@ -17,10 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 
+from django.views.generic import RedirectView
+from django.urls import reverse_lazy
+
 urlpatterns = [
+    path('', RedirectView.as_view(url=reverse_lazy('inicioau'), permanent=False)), 
     path('admin/', admin.site.urls),
     path('',include('Aplicaciones.Autor.urls')),
     path('',include('Aplicaciones.Libreria.urls')),
-    path('',include('Aplicaciones.LIbro.urls')),
+    path('',include('Aplicaciones..urls')),
 
 ]

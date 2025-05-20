@@ -117,16 +117,17 @@
 
             </div>
         </div>
+        {% if messages%}
+            {% for mensaje in messages%}
+                <script>Swal.fire({
+                title: "CONFIRMACIÓN",
+                text: "{{mensaje}}",
+                icon: "success"
+                });</script>          
+            {% endfor%}
+        {%endif%}
     </footer>
-    {% if messages%}
-        {% for mensaje in messages%}
-        <script>Swal.fire({
-        title: "CONFIRMACIÓN",
-        text: "{{mensaje}}",
-        icon: "success"
-        });</script>          
-        {% endfor%}
-    {%endif%}
+    
 
     <script src="{% static 'plantilla/blogy/js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'plantilla/blogy/js/tiny-slider.js' %}"></script>

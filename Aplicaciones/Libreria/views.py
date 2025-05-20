@@ -34,7 +34,7 @@ def procesarEdicionLibreria(request):
     id_libreria=request.POST["id_libreria"]
     nombre = request.POST["nombre"]
     direccion = request.POST["direccion"]
-    libreria=Libreria.objects.get(id_autor=id_libreria)
+    libreria=Libreria.objects.get(id_libreria=id_libreria)
     libreria.nombre=nombre
     libreria.direccion=direccion
     libreria.save()

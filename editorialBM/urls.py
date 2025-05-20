@@ -25,6 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('Aplicaciones.Autor.urls')),
     path('',include('Aplicaciones.Libreria.urls')),
+    path('',include('Aplicaciones.Libro.urls')),
 
 
 ]

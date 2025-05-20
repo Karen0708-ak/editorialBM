@@ -15,4 +15,3 @@ class Libro(models.Model):
 
     # Relación muchos a muchos con librerías
     librerias = models.ManyToManyField(Libreria, related_name='libros')
-

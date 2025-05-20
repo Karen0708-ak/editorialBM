@@ -1,0 +1,64 @@
+{% extends "plantillas.html" %}
+{% block title %}Agregar Nuevo Libro{% endblock %}
+{% block contenido %}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="card-title mb-0">Nuevo Libro</h3>
+                </div>
+                <div class="card-body">
+                    <form action="{% url 'guardarLibro' %}" method="post">
+                        {% csrf_token %}
+                        
+                        <div class="mb-3">
+                            <label for="isbn" class="form-label">ISBN</label>
+                            <input type="text" class="form-control" id="isbn" name="isbn" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="titulo" class="form-label">Título</label>
+                            <input type="text" class="form-control" id="titulo" name="titulo" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="anio" class="form-label">Año</label>
+                            <input type="number" class="form-control" id="anio" name="anio" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="autores" class="form-label">Autores</label>
+                            <select class="form-select" id="autores" name="autores" multiple>
+                                {% for autor in autores %}
+                                    <option value="{{ autor.id }}">{{ autor.nombre }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="librerias" class="form-label">Librerías</label>
+                            <select class="form-select" id="librerias" name="librerias" multiple>
+                                {% for libreria in librerias %}
+                                    <option value="{{ libreria.id }}">{{ libreria.nombre }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a href="{% url 'inicio_libro' %}" class="btn btn-outline-secondary me-md-2">
+                                <i class="bi bi-x-circle"></i> Cancelar
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-save"></i> Guardar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

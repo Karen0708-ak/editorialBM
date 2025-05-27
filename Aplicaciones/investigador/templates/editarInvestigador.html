@@ -11,8 +11,14 @@
             <label for="nombre">Nombre</label><br>
             <input class="form-control" type="text" name="nombre" id="nombre" value="{{investigadorEditar.nombre}}"><br>
 
+            <label for="apellido">Apellido</label><br>
+            <input class="form-control" type="text" name="apellido" id="apellido" value="{{investigadorEditar.apellido}}"><br>
+
             <label for="nacionalidad">Nacionalidad</label><br>
             <input class="form-control" type="text" name="nacionalidad" id="nacionalidad" value="{{investigadorEditar.nacionalidad}}"><br>
+
+            <label for="edad">Edad</label><br>
+            <input class="form-control" type="text" name="edad" id="edad" value="{{investigadorEditar.edad}}"><br>
 
             <button class="btn btn-success" type="submit">Guardar</button>
             <a class="btn btn-outline-danger" href="{% url 'investigador' %}">Cancelar</a><br><br>

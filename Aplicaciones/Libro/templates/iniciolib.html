@@ -34,7 +34,7 @@
                         <i class="fa fa-trash"></i>
                     </a>
                     <script>
-                        function confirmarEliminacion(id) {
+                        function confirmarEliminacion(id_libro) {
                             Swal.fire({
                             title: '¿Estás seguro?',
                             text: '¡Esta acción no se puede deshacer!',
@@ -46,7 +46,7 @@
                             cancelButtonText: 'Cancelar'
                             }).then((result) => {
                             if (result.isConfirmed) {
-                                window.location.href = `eliminarLibro/${id_libro}`;
+                                window.location.href = `/eliminarLibro/${id_libro}`;
                             }
                             });
                         }

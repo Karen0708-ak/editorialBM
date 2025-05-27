@@ -5,7 +5,7 @@
     <div class="col-md-3" ></div>
     <div class="col-md-6 bg-light" >
         <h1 >Nuevo Libro</h1>
-        <form action="guardarLibro" method="post">
+        <form action="/guardarLibro/" method="post">
             {% csrf_token %}
             
             <label for="isbn">ISBN </label><br>
@@ -15,7 +15,7 @@
             <input class="form-control " type="text" name="titulo" id="titulo" required><br>
 
             <label for="anio" >Año</label><br>
-            <input class="form-control " type="text" name="anio" id="anio" required><br>
+            <input class="form-control " type="number" name="anio" id="anio" required><br>
 
             <label for="autor" >Autor</label><br>
             <select name="autor" id="autor">

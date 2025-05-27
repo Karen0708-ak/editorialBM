@@ -5,14 +5,21 @@
     <div class="col-md-3"></div>
     <div class="col-md-6 bg-light">
         <h1>Nuevo Investigador</h1>
-        <form action="guardarInvestigador" method="post">
+        <form action="{% url 'guardarInvestigador' %}" method="post">
+
             {% csrf_token %}
             
             <label for="nombre">Nombre</label><br>
             <input class="form-control" type="text" name="nombre" id="nombre" required><br>
 
+            <label for="apellido">Apellido</label><br>
+            <input class="form-control" type="text" name="apellido" id="apellido" required><br>
+
             <label for="nacionalidad">Nacionalidad</label><br>
             <input class="form-control" type="text" name="nacionalidad" id="nacionalidad" required><br>
+
+            <label for="edad">Edad</label><br>
+            <input class="form-control" type="text" name="edad" id="edad" required><br>
 
             <button class="btn btn-success" type="submit">Guardar</button>
             <a class="btn btn-outline-danger" href="{% url 'investigador' %}">Cancelar</a><br><br>

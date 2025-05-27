@@ -5,7 +5,7 @@
     <div class="col-md-3" ></div>
     <div class="col-md-6 bg-light" >
         <h1 >Nuevo Libro</h1>
-        <form action="/procesarEdicionLibro" method="post">
+        <form action="/procesarEdicionLibro/" method="post">
             {% csrf_token %}
             <input type="hidden" name="id_libro" value="{{libroEditar.id_libro}}">
             <label for="isbn">ISBN </label><br>

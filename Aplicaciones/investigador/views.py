@@ -10,10 +10,14 @@ def nuevoInvestigador(request):
 
 def guardarInvestigador(request):
     nombre = request.POST["nombre"]
+    apellido = request.POST["apellido"]
     nacionalidad = request.POST["nacionalidad"]
-    nuevoAutor=Investigador.objects.create(
+    edad = request.POST["edad"]
+    nuevoInvestigador=Investigador.objects.create(
             nombre=nombre,
             nacionalidad=nacionalidad,
+            apellido=apellido,
+            edad=edad
         )
     messages.success(request,"Investigador guardado exitosamente")
     return redirect('investigador')
@@ -31,10 +35,14 @@ def editarInvestigador(request,id_investigador):
 def procesarEdicionInvestigador(request):
     id_investigador=request.POST["id_investigador"]
     nombre = request.POST["nombre"]
+    apellido = request.POST["apellido"]
     nacionalidad = request.POST["nacionalidad"]
+    edad = request.POST["edad"]
     autor=Investigador.objects.get(id_investigador=id_investigador)
     autor.nombre=nombre
+    autor.apellido=apellido
     autor.nacionalidad=nacionalidad
+    autor.edad=edad
     autor.save()
     messages.success(request,"Investigador ACTUALIZADO exitosamente")
     return redirect('investigador')

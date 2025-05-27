@@ -13,6 +13,7 @@
             <th>APELLIDO</th>
             <th>NACIONALIDAD</th>
             <th>EDAD</th>
+            <th>ACCIONES</th>
         </tr>
     </thead>
     <tbody>
@@ -21,9 +22,12 @@
                 <td>{{investigadorTemporal.id_investigador}}</td>
                 <td>{{investigadorTemporal.nombre}}</td>
                 <td>{{investigadorTemporal.apellido}}</td>
+                <td>{{investigadorTemporal.nacionalidad}}</td>
+                <td>{{investigadorTemporal.edad}}</td>
 
                 <td>
-                    <a href="editarInvestigador/{{investigadorTemporal.id_investigador}}" class="btn btn-outline-warning">
+                    <a href="{% url 'editarInvestigador' investigadorTemporal.id_investigador %}" class="btn btn-outline-warning">
+
                         <i class="fa fa-pen"></i>
                     </a>
                     <a href="#" class="btn btn-outline-danger" onclick="confirmarEliminacion('{{investigadorTemporal.id_investigador}}')">
@@ -42,7 +46,8 @@
                             cancelButtonText: 'Cancelar'
                             }).then((result) => {
                             if (result.isConfirmed) {
-                                window.location.href = `eliminarInvestigador/${id_autor}`;
+                                window.location.href = "{% url 'eliminarInvestigador' 'ID_TEMP' %}".replace('ID_TEMP', id_autor);
+
                             }
                             });
                         }
@@ -53,8 +58,8 @@
     </tbody>
 </table>
 <div class="text-center ">
-    <a href="nuevoInvestigador" class="btn btn-primary " >
-        Agregar Autor
+    <a href="/nuevoInvestigador/" class="btn btn-primary " >
+        Agregar Investigador
     </a>
 </div>
 <br>

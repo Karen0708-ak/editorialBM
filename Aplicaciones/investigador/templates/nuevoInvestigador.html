@@ -5,7 +5,7 @@
     <div class="col-md-3"></div>
     <div class="col-md-6 bg-light">
         <h1>Nuevo Investigador</h1>
-        <form action="{% url 'guardarInvestigador' %}" method="post">
+        <form action="{% url 'guardarInvestigador' %}" id="frm_nuevo_investigador" method="post">
 
             {% csrf_token %}
             
@@ -27,4 +27,47 @@
     </div>
     <div class="col-md-3"></div>
 </div>
+
+<script>
+    $("#frm_nuevo_investigador").validate({
+        rules: {
+            nombre: {
+                required: true,
+                minlength: 3
+            },
+            apellido: {
+                required: true,
+                minlength: 3
+            },
+            nacionalidad: {
+                required: true,
+                minlength: 3
+            },
+            edad: {
+                required: true,
+                digits: true,
+                min: 0
+            }
+        },
+        messages: {
+            nombre: "Por favor, ingrese un nombre válido.",
+            apellido: "Por favor, ingrese un apellido válido.",
+            nacionalidad: "Por favor, ingrese una nacionalidad válida.",
+            edad: "Por favor, ingrese una edad válida."
+        }
+    });
+</script>
+</div>
+
+{% if messages %}
+    {% for mensaje in messages %}
+        <script>
+            Swal.fire({
+                title: "CONFIRMACIÓN",
+                text: "{{ mensaje }}",
+                icon: "success"
+            });
+        </script>
+    {% endfor %}
+{% endif %}
 {% endblock %}

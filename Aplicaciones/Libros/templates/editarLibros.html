@@ -5,7 +5,7 @@
     <div class="col-md-3"></div>
     <div class="col-md-6 bg-light">
         <h1>Editar Libro</h1>
-        <form action="{% url 'guardarLibros' %}" method="post">
+        <form action="{% url 'guardarLibros' %}" id="frm_editar_libros" method="post">
             {% csrf_token %}
             <input type="hidden" name="id" value="{{ libro.id }}">
 
@@ -38,4 +38,58 @@
     </div>
     <div class="col-md-3"></div>
 </div>
+
+<script>
+    $("#frm_editar_libros").validate({
+        rules: {
+            titulo: {
+                required: true,
+                minlength: 3
+            },
+            anio: {
+                required: true,
+                digits: true,
+                min: 1900,
+                max: new Date().getFullYear()
+            },
+            ISBN: {
+                required: true,
+                minlength: 10
+            },
+            paginas: {
+                required: true,
+                digits: true,
+                min: 1
+            },
+            investigador: {
+                required: true
+            }
+        },
+        messages: {
+            titulo: {
+                required: "El título es obligatorio",
+                minlength: "El título debe tener al menos 3 caracteres"
+            },
+            anio: {
+                required: "El año es obligatorio",
+                digits: "Debe ingresar un número válido",
+                min: "El año no puede ser anterior a 1900",
+                max: "El año no puede ser mayor al año actual"
+            },
+            ISBN: {
+                required: "El ISBN es obligatorio",
+                minlength: "El ISBN debe tener al menos 10 caracteres"
+            },
+            paginas: {
+                required: "El número de páginas es obligatorio",
+                digits: "Debe ingresar un número válido",
+                min: "El número de páginas debe ser al menos 1"
+            },
+            investigador: {
+                required: "Debe seleccionar un investigador"
+            }
+        }
+    });
+
+</script>
 {% endblock %}

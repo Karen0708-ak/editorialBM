@@ -5,7 +5,7 @@
     <div class="col-md-3"></div>
     <div class="col-md-6 bg-light">
         <h1>Editar Investigador</h1>
-        <form action="/procesarEdicionInvestigador" method="post">
+        <form action="/procesarEdicionInvestigador" id="frm_editar_investigador" method="post">
             {% csrf_token %}
             <input type="hidden" name="id_investigador" value="{{investigadorEditar.id_investigador}}">
             <label for="nombre">Nombre</label><br>
@@ -26,4 +26,33 @@
     </div>
     <div class="col-md-3"></div>
 </div>
+<script>
+    $("#frm_editar_investigador").validate({
+        rules: {
+            nombre: {
+                required: true,
+                minlength: 3
+            },
+            apellido: {
+                required: true,
+                minlength: 3
+            },
+            nacionalidad: {
+                required: true,
+                minlength: 3
+            },
+            edad: {
+                required: true,
+                digits: true,
+                min: 0
+            }
+        },
+        messages: {
+            nombre: "Por favor, ingrese un nombre válido.",
+            apellido: "Por favor, ingrese un apellido válido.",
+            nacionalidad: "Por favor, ingrese una nacionalidad válida.",
+            edad: "Por favor, ingrese una edad válida."
+        }
+    });
+</script>
 {% endblock %}

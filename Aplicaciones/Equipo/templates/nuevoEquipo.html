@@ -1,0 +1,34 @@
+{% extends 'plantilla.html' %}
+{% load static %}
+{% block body %}
+<div class="row" >
+    <div class="col-md-3" ></div>
+    <div class="col-md-6 bg-light" >
+        <h1 >Nuevo Equipo</h1>
+        <form action="guardarEquipo" method="post">
+            {% csrf_token %}
+            
+            <label for="nombre">Nombre </label><br>
+            <input class="form-control" type="text" name="nombre" id="nombre" required><br>
+
+            <label for="partidos_ganados" >N° Partidos Ganados</label><br>
+            <input class="form-control " type="text" name="partidos_ganados" id="partidos_ganados" required><br>
+
+            <label for="partidos_perdidos">N° Partidos Perdidos</label><br>
+            <input class="form-control " type="text" name="partidos_perdidos" id="partidos_perdidos" required><br>
+
+            <label for="jugador" >Jugador</label><br>
+            <select name="jugador" id="jugador" multiple>
+                <option value="">Seleccione los jugadores</option>
+                {% for e in jugador%}
+                    <option value="{{e.id_jugador}}">{{e.nombre}}</option>
+                {% endfor%}
+            </select><br>
+
+            <button class="btn btn-success" type="submit">Guardar</button>
+            <a class="btn btn-danger" href="{% url 'inicioeq' %}">Cancelar</a><br><br>
+        </form>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+{% endblock %}

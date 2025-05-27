@@ -1,0 +1,36 @@
+{% extends 'plantilla.html' %}
+{% load static %}
+{% block body %}
+<div class="row" >
+    <div class="col-md-3" ></div>
+    <div class="col-md-6 bg-light" >
+        <h1 >Editar Equipo</h1>
+        <form action="/procesarEdicionEquipo" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="id_equipo" value="{{equipoEditar.id_equipo}}">
+            <label for="nombre">Nombre </label><br>
+            <input class="form-control" type="text" name="nombre" id="nombre" value="{{equipoEditar.nombre}}" ><br>
+
+            <label for="partidos_ganados" >N° Partidos Ganados</label><br>
+            <input class="form-control " type="text" name="partidos_ganados" id="partidos_ganados" value="{{equipoEditar.partidos_ganados}}"><br>
+
+            <label for="partidos_perdidos">N° Partidos Perdidos</label><br>
+            <input class="form-control " type="text" name="partidos_perdidos" id="partidos_perdidos" value="{{equipoEditar.partidos_perdidos}}"><br>
+
+            <label for="jugador">Jugadores:</label><br>
+            <select name="jugador" id="jugador" multiple>
+                {% for j in jugador %}
+                    <option value="{{ j.id_jugador }}"
+                        {% if j in equipoEditar.jugador.all %}selected{% endif %}>
+                        {{ j.nombre }}
+                    </option>
+                {% endfor %}
+            </select><br><br>
+            
+            <button class="btn btn-success" type="submit">Guardar</button>
+            <a class="btn btn-danger" href="{% url 'inicioeq' %}">Cancelar</a><br><br>
+        </form>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+{% endblock %}

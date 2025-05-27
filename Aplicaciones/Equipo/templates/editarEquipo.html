@@ -5,7 +5,7 @@
     <div class="col-md-3" ></div>
     <div class="col-md-6 bg-light" >
         <h1 >Editar Equipo</h1>
-        <form action="/procesarEdicionEquipo" method="post">
+        <form action="/procesarEdicionEquipo" id="frm_nuevo_equipo" method="post">
             {% csrf_token %}
             <input type="hidden" name="id_equipo" value="{{equipoEditar.id_equipo}}">
             <label for="nombre">Nombre </label><br>
@@ -33,4 +33,55 @@
     </div>
     <div class="col-md-3"></div>
 </div>
+<!--Embeber codigo javascript/jquery dentro del Html-->
+<script>
+    $("#frm_nuevo_equipo").validate({
+        rules:{
+            "nombre":{
+                required:true,
+                minlength:7,// cuenta caracteres 
+                maxlength:10// caracteres maximos
+            },
+            "partidos_ganados":{
+                required:true,
+                number:true,
+                min:1,//cantidades numericas
+                max:100
+            },
+            "partidos_perdidos":{
+                required:true,
+                number:true,
+                min:1,//cantidades numericas
+                max:100
+            },
+            "jugador":{
+                required:true
+            }
+
+        },
+        messages:{
+           "nombre":{
+                required:"Por favor el campo es obligatorio",
+                minlength:"Debe ingresar minimo 7 caracteres",// cuenta caracteres 
+                maxlength:"Debe ingresar maximo 10 caracteres"// caracteres maximos
+            },
+            "partidos_ganados":{
+                required:"Por favor el campo es obligatorio",
+                number:"Debe ingresar solo números",
+                min:"Debe ingresar minimo de 1",//cantidades numericas
+                max:"Debe ingresar maximo de 100"
+            },
+            "partidos_perdidos":{
+                required:"Por favor el campo es obligatorio",
+                number:"Debe ingresar solo números",
+                min:"Debe ingresar minimo de 1",//cantidades numericas
+                max:"Debe ingresar maximo de 100"
+            },
+            "jugador":{
+                required:"Por favor el campo es obligatorio",
+            }
+        }
+    });
+</script>
+{% endblock %}
 {% endblock %}

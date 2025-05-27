@@ -5,7 +5,7 @@
     <div class="col-md-3" ></div>
     <div class="col-md-6 bg-light" >
         <h1 >Nuevo Libro</h1>
-        <form action="/guardarLibro/" method="post">
+        <form action="/guardarLibro/" id="frm_nuevo_libro" method="post">
             {% csrf_token %}
             
             <label for="isbn">ISBN </label><br>
@@ -38,4 +38,60 @@
     </div>
     <div class="col-md-3"></div>
 </div>
+<!--Embeber codigo javascript/jquery dentro del Html-->
+<script>
+    $("#frm_nuevo_libro").validate({
+        rules:{
+            "isbn":{
+                required:true,
+                minlength:7,// cuenta caracteres 
+                maxlength:10// caracteres maximos
+            },
+            "titulo":{
+                required:true,
+                minlength:7,// cuenta caracteres 
+                maxlength:15// caracteres maximos
+            },
+            "anio":{
+                required:true,
+                number:true,
+                min:2000,//cantidades numericas
+                max:2025
+            },
+            "autor":{
+                required:true
+            },
+            "libreria":{
+                required:true
+            }
+
+        },
+        messages:{
+           "isbn":{
+                required:"Por favor el campo es obligatorio",
+                minlength:"Debe ingresar minimo 7 caracteres",// cuenta caracteres 
+                maxlength:"Debe ingresar maximo 10 caracteres"// caracteres maximos
+            },
+            "titulo":{
+                required:"Por favor el campo es obligatorio",
+                minlength:"Debe ingresar minimo 7 caracteres",// cuenta caracteres 
+                maxlength:"Debe ingresar maximo 15 caracteres"// caracteres maximos
+            },
+            "anio":{
+                required:"Por favor el campo es obligatorio",
+                number:"Debe ingresar solo números",
+                min:"Debe ingresar minimo desde el año 2000",//cantidades numericas
+                max:"Debe ingresar maximo hasta el año 2025"
+            },
+            "autor":{
+                required:"Por favor el campo es obligatorio",
+                
+            },
+            "libreria":{
+                required:"Por favor el campo es obligatorio",
+                
+            }
+        }
+    });
+</script>
 {% endblock %}

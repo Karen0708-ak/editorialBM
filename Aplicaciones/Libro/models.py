@@ -9,4 +9,4 @@ class Libro(models.Model):
     titulo = models.CharField(max_length=200)
     anio = models.PositiveIntegerField()
     autor = models.ForeignKey(Autor, on_delete=models.CASCADE)
-    Libreria = models.ForeignKey(Libreria, on_delete=models.CASCADE)
+    libreria = models.ForeignKey(Libreria, on_delete=models.CASCADE)

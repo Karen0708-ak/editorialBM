@@ -1,0 +1,41 @@
+{% extends 'plantilla.html' %}
+{% load static %}
+{% block body %}
+<div class="row" >
+    <div class="col-md-3" ></div>
+    <div class="col-md-6 bg-light" >
+        <h1 >Nuevo Libro</h1>
+        <form action="guardarLibro" method="post">
+            {% csrf_token %}
+            
+            <label for="isbn">ISBN </label><br>
+            <input class="form-control" type="text" name="isbn" id="isbn" required><br>
+
+            <label for="titulo" >Titulo</label><br>
+            <input class="form-control " type="text" name="titulo" id="titulo" required><br>
+
+            <label for="anio" >Año</label><br>
+            <input class="form-control " type="text" name="anio" id="anio" required><br>
+
+            <label for="autor" >Autor</label><br>
+            <select name="autor" id="autor">
+                <option value="">Seleccione el autor</option>
+                {% for e in autor%}
+                    <option value="{{e.id_autor}}">{{e.nombre}}</option>
+                {% endfor%}
+            </select><br>
+            <label for="libreria" >Libreria</label><br>
+            <select name="libreria" id="libreria">
+                <option value="">Seleccione una Libreria</option>
+                {% for e in libreria%}
+                    <option value="{{e.id_libreria}}">{{e.nombre}}</option>
+                {% endfor%}
+            </select><br>
+
+            <button class="btn btn-success" type="submit">Guardar</button>
+            <a class="btn btn-danger" href="{% url 'iniciolib' %}">Cancelar</a><br><br>
+        </form>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'plantilla.html' %}
+{% load static %}
+{% block body %}
+<div class="row" >
+    <div class="col-md-3" ></div>
+    <div class="col-md-6 bg-light" >
+        <h1 >Nuevo Libro</h1>
+        <form action="/procesarEdicionLibro" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="id_libro" value="{{libroEditar.id_libro}}">
+            <label for="isbn">ISBN </label><br>
+            <input class="form-control" type="text" name="isbn" id="isbn" value="{{libroEditar.isbn}}"><br>
+
+            <label for="titulo" >Titulo</label><br>
+            <input class="form-control " type="text" name="titulo" id="titulo" value="{{libroEditar.titulo}}"><br>
+
+            <label for="anio" >Año</label><br>
+            <input class="form-control " type="number" name="anio" id="anio" value="{{libroEditar.anio}}"><br>
+
+            <label for="autor">Autor</label><br>
+            <select name="autor" id="autor">
+                <option value="">Seleccione el autor</option>
+                {% for e in autor %}
+                    <option value="{{e.id_autor}}" {% if e.id_autor == libroEditar.autor.id_autor %}selected{% endif %}>
+                        {{e.nombre}}
+                    </option>
+                {% endfor %}
+            </select><br>
+
+            <label for="libreria">Librería</label><br>
+            <select name="libreria" id="libreria">
+                <option value="">Seleccione una libreria</option>
+                {% for e in libreria %}
+                    <option value="{{e.id_libreria}}" {% if e.id_libreria == libroEditar.libreria.id_libreria %}selected{% endif %}>
+                        {{e.nombre}}
+                    </option>
+                {% endfor %}
+            </select><br>
+
+            <button class="btn btn-success" type="submit">Guardar</button>
+            <a class="btn btn-danger" href="{% url 'iniciolib' %}">Cancelar</a><br><br>
+        </form>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+{% endblock %}

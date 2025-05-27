@@ -26,6 +26,7 @@ urlpatterns = [
     path('',include('Aplicaciones.Autor.urls')),
     path('',include('Aplicaciones.Libreria.urls')),
     path('',include('Aplicaciones.Libro.urls')),
+    path('',include('Aplicaciones.investigador.urls')),
 
 
 ]

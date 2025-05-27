@@ -24,6 +24,10 @@
     <link rel="stylesheet" href="{% static 'plantilla/blogy/css/glightbox.min.css' %}">
     <link rel="stylesheet" href="{% static 'plantilla/blogy/css/style.css' %}">
 
+    <!-- 1. importando archivo jv de jquery-->
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <!-- 2. jsquery validation-->
+     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
     <link rel="stylesheet" href="{% static 'plantilla/blogy/css/flatpickr.min.css' %}">
     <!--Importando iconos de fint awasome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -75,6 +79,12 @@
                                     <ul class="dropdown">
                                         <li><a href="nuevoLibro">Agregar Libro</a></li>
                                     </ul>
+
+                                    <li class="has-children">
+                                        <a href="{% url 'investigador' %}">Investigador</a>
+                                        <ul class="dropdown">
+                                            <li><a href="nuevoInvestigador">Agregar Investigador</a></li>
+                                        </ul>
                             </ul>
                         </div>
                         <div class="col-2 text-end">

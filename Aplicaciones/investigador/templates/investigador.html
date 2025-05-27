@@ -1,0 +1,62 @@
+{% extends 'plantilla.html' %}
+{% load static %}
+{% block body %}
+<br>
+<h1 class="text-center">Listado de Investigadores</h1>
+
+<hr>
+<table class="table table-bordered table-striped table-hover ">
+    <thead>
+        <tr class="table-success text-center">
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>APELLIDO</th>
+            <th>NACIONALIDAD</th>
+            <th>EDAD</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for investigadorTemporal in investigador %}
+            <tr>
+                <td>{{investigadorTemporal.id_investigador}}</td>
+                <td>{{investigadorTemporal.nombre}}</td>
+                <td>{{investigadorTemporal.apellido}}</td>
+
+                <td>
+                    <a href="editarInvestigador/{{investigadorTemporal.id_investigador}}" class="btn btn-outline-warning">
+                        <i class="fa fa-pen"></i>
+                    </a>
+                    <a href="#" class="btn btn-outline-danger" onclick="confirmarEliminacion('{{investigadorTemporal.id_investigador}}')">
+                        <i class="fa fa-trash"></i>
+                    </a>
+                    <script>
+                        function confirmarEliminacion(id_autor) {
+                            Swal.fire({
+                            title: '¿Estás seguro?',
+                            text: '¡Esta acción no se puede deshacer!',
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Sí, eliminar',
+                            cancelButtonText: 'Cancelar'
+                            }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = `eliminarInvestigador/${id_autor}`;
+                            }
+                            });
+                        }
+                        </script>  
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div class="text-center ">
+    <a href="nuevoInvestigador" class="btn btn-primary " >
+        Agregar Autor
+    </a>
+</div>
+<br>
+<br>
+{% endblock %}

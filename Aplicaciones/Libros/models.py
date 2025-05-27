@@ -1,12 +1,12 @@
 from django.db import models
-
 from Aplicaciones.investigador.models import Investigador
 
-class Libros(models.Model):
-    id_libro = models.AutoField(primary_key=True)
+class Libro(models.Model):
     titulo = models.CharField(max_length=100)
-    anio = models.CharField(max_length=100)
-    ISBN = models.CharField(max_length=100)
-    paginas = models.CharField(max_length=100)
+    anio = models.CharField(max_length=4)
+    ISBN = models.CharField(max_length=20, unique=True)
+    paginas = models.CharField(max_length=4)
+    investigadores = models.ManyToManyField(Investigador, related_name='libros')
 
-    investigador = models.ManyToManyField(Investigador, related_name='libro')
+    def __str__(self):
+        return self.titulo

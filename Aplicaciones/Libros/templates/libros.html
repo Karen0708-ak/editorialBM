@@ -1,0 +1,62 @@
+{% extends "plantilla.html" %}
+{% load static %}
+{% block body %}
+
+<br>
+<h1 class="text-center">Listado de Libros</h1>
+<hr>
+<table class="table table-bordered table-striped table-hover ">
+    <thead>
+        <tr>
+            <th>Titulo</th>
+            <th>Anio</th>
+            <th>ISBN</th>
+            <th>Paginas</th>
+            <th>Investigadores</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for libros in libross %}
+        <tr>
+            <td>{{ libros.titulo }}</td>
+            <td>{{ libros.anio }}</td>
+            <td>{{ libros.ISBN }}</td>
+            <td>{{ libros.paginas }}</td>
+            <td>{{ libros.investigadores.nombre }}</td>
+            <td><a  href="{% url 'editarLibros' libros.id %}">Editar <i class="fa fa-pen"></i></a>
+                <a style="color: red;" href="#" onclick="confirmarEliminacion ('{{ libros.id }}') ">Eliminar <i class="fa fa-trash"></i></a></td>
+                 <!-- Script de SweetAlert -->
+                 <script>
+                    function confirmarEliminacion(id) {
+                        Swal.fire({
+                        title: '¿Estás seguro?',
+                        text: '¡Esta acción no se puede deshacer!',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Sí, eliminar',
+                        cancelButtonText: 'Cancelar'
+                        }).then((result) => {
+                        if (result.isConfirmed) {
+                            // Redirige al endpoint de eliminación en Django
+                            window.location.href = `/eliminarLibros/${id}`;
+                        }
+                        });
+                    }
+                    </script>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="text-center ">
+    <a href="{% url 'nuevosLibros' %}" class="btn btn-primary " >
+        Agregar libros
+</div>
+<br>
+<br>
+
+
+
+{% endblock %}

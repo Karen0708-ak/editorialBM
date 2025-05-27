@@ -29,6 +29,7 @@ urlpatterns = [
     path('',include('Aplicaciones.Libro.urls')),
     path('',include('Aplicaciones.Jugador.urls')),
     path('',include('Aplicaciones.Equipo.urls')),
+    path('',include('Aplicaciones.Libros.urls')),
 
 
 ]

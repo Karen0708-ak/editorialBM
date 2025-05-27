@@ -1,0 +1,41 @@
+{% extends 'plantilla.html' %}
+{% load static %}
+{% block body %}
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 bg-light">
+        <h1>Editar Libro</h1>
+        <form action="{% url 'guardarLibros' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="id" value="{{ libro.id }}">
+
+            <label for="titulo">Titulo</label><br>
+            <input type="text" class="form-control" name="titulo" value="{{ libro.titulo }}" required><br>
+
+            <label for="anio">Año</label><br>
+            <input type="number" class="form-control" name="anio" value="{{ libro.anio }}" required><br>
+
+            <label for="ISBN">ISBN</label><br>
+            <input type="text" class="form-control" name="ISBN" value="{{ libro.ISBN }}" required><br>
+
+            <label for="paginas">Paginas</label><br>
+            <input type="number" class="form-control" name="paginas" value="{{ libro.paginas }}" required><br>
+
+            <label for="investigador">Investigador</label><br>
+            <select class="form-control" name="investigador" required>
+                <option value="">Seleccione un Investigador</option>
+                {% for investigador in investigadores %}
+                    <option value="{{ investigador.id_investigador }}" 
+                        {% if investigador.id_investigador == libro.investigadores.id_investigador %}selected{% endif %}>
+                        {{ investigador.nombre }}
+                    </option>
+                {% endfor %}
+            </select><br>
+
+            <button class="btn btn-success" type="submit">Guardar</button>
+            <a href="{% url 'inicio' %}" class="btn btn-danger">Cancelar</a><br>
+        </form>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+{% endblock %}

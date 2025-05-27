@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'Aplicaciones.investigador',
     'Aplicaciones.Libros',
     'Aplicaciones.Libro',
+    'Aplicaciones.Jugador',
+    'Aplicaciones.Equipo',
 ]
 
 MIDDLEWARE = [

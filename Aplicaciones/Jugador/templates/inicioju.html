@@ -1,0 +1,62 @@
+{% extends 'plantilla.html' %}
+{% load static %}
+{% block body %}
+<br>
+<h1 class="text-center">Listado de Jugadores</h1>
+
+<hr>
+<table class="table table-bordered table-striped table-hover ">
+    <thead>
+        <tr class="table-success text-center">
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>APELLIDO</th>
+            <th>CELULAR</th>
+            <th>ACCIONES</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for jugadorTemporal in jugador %}
+            <tr>
+                <td>{{jugadorTemporal.id_jugador}}</td>
+                <td>{{jugadorTemporal.nombre}}</td>
+                <td>{{jugadorTemporal.apellido}}</td>
+                <td>{{jugadorTemporal.celular}}</td>
+                <td>
+                    <a href="editarJugador/{{jugadorTemporal.id_jugador}}" class="btn btn-outline-warning">
+                        <i class="fa fa-pen"></i>
+                    </a>
+                    <a href="#" class="btn btn-outline-danger" onclick="confirmarEliminacion('{{jugadorTemporal.id_jugador}}')">
+                        <i class="fa fa-trash"></i>
+                    </a>
+                    <script>
+                        function confirmarEliminacion(id_jugador) {
+                            Swal.fire({
+                            title: '¿Estás seguro?',
+                            text: '¡Esta acción no se puede deshacer!',
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Sí, eliminar',
+                            cancelButtonText: 'Cancelar'
+                            }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = `eliminarJugador/${id_jugador}`;
+                            }
+                            });
+                        }
+                        </script>  
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div class="text-center ">
+    <a href="nuevoJugador" class="btn btn-primary " >
+        Agregar Jugador
+    </a>
+</div>
+<br>
+<br>
+{% endblock %}

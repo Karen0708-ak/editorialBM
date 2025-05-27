@@ -5,14 +5,14 @@
     <div class="col-md-3"></div>
     <div class="col-md-6 bg-light">
         <h1>Nuevo Autor</h1>
-        <form action="guardarAutor" method="post">
+        <form action="guardarAutor" id="frm_nuevo_autor" method="post">
             {% csrf_token %}
             
             <label for="nombre">Nombre</label><br>
-            <input class="form-control" type="text" name="nombre" id="nombre" required><br>
+            <input class="form-control" type="text" name="nombre" id="nombre" ><br>
 
             <label for="nacionalidad">Nacionalidad</label><br>
-            <input class="form-control" type="text" name="nacionalidad" id="nacionalidad" required><br>
+            <input class="form-control" type="text" name="nacionalidad" id="nacionalidad"><br>
 
             <button class="btn btn-success" type="submit">Guardar</button>
             <a class="btn btn-outline-danger" href="{% url 'inicioau' %}">Cancelar</a><br><br>
@@ -20,4 +20,34 @@
     </div>
     <div class="col-md-3"></div>
 </div>
+<!--Embeber codigo javascript/jquery dentro del Html-->
+<script>
+    $("#frm_nuevo_autor").validate({
+        rules:{
+            "nombre":{
+                required:true,
+                minlength:5,// cuenta caracteres 
+                maxlength:7// caracteres maximos
+            },
+            "nacionalidad":{
+                required:true,
+                minlength:7,// cuenta caracteres 
+                maxlength:15// caracteres maximos
+            }
+
+        },
+        messages:{
+            "nombre":{
+                required:"Por favor el Campo es obligatorio",
+                minlength:"Debe ingresar minimo 5 caracteres",// cuenta caracteres 
+                maxlength:"Debe ingresar maxima 7 caracteres"// caracteres maximos
+            },
+            "nacionalidad":{
+                required:"Por favor el Campo es obligatorio",
+                minlength:"Debe ingresar minimo 7 caracteres",// cuenta caracteres 
+                maxlength:"Debe ingresar maxima 15 caracteres"// caracteres maximos
+            }
+        }
+    });
+</script>
 {% endblock %}

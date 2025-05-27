@@ -5,7 +5,7 @@
     <div class="col-md-3"></div>
     <div class="col-md-6 bg-light">
         <h1>Editar Autor</h1>
-        <form action="/procesarEdicionAutor" method="post">
+        <form action="/procesarEdicionAutor" id="frm_nuevo_autor" method="post">
             {% csrf_token %}
             <input type="hidden" name="id_autor" value="{{autorEditar.id_autor}}">
             <label for="nombre">Nombre</label><br>
@@ -20,4 +20,34 @@
     </div>
     <div class="col-md-3"></div>
 </div>
+<!--Embeber codigo javascript/jquery dentro del Html-->
+<script>
+    $("#frm_nuevo_autor").validate({
+        rules:{
+            "nombre":{
+                required:true,
+                minlength:5,// cuenta caracteres 
+                maxlength:7// caracteres maximos
+            },
+            "nacionalidad":{
+                required:true,
+                minlength:7,// cuenta caracteres 
+                maxlength:15// caracteres maximos
+            }
+
+        },
+        messages:{
+            "nombre":{
+                required:"Por favor el Campo es obligatorio",
+                minlength:"Debe ingresar minimo 5 caracteres",// cuenta caracteres 
+                maxlength:"Debe ingresar maxima 7 caracteres"// caracteres maximos
+            },
+            "nacionalidad":{
+                required:"Por favor el Campo es obligatorio",
+                minlength:"Debe ingresar minimo 7 caracteres",// cuenta caracteres 
+                maxlength:"Debe ingresar maxima 15 caracteres"// caracteres maximos
+            }
+        }
+    });
+</script>
 {% endblock %}

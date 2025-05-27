@@ -24,6 +24,10 @@
     <link rel="stylesheet" href="{% static 'plantilla/blogy/css/glightbox.min.css' %}">
     <link rel="stylesheet" href="{% static 'plantilla/blogy/css/style.css' %}">
 
+    <!--Importacion e jQuery-->
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <!--Importacion e jQuery para la validacion-->
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
     <!-- 1. importando archivo jv de jquery-->
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <!-- 2. jsquery validation-->
@@ -140,22 +144,15 @@
                 });</script>          
             {% endfor%}
         {%endif%}
+        <style>
+            .error {
+              color: red;
+              font-weight: bold;
+            }
+            .form-control.error {
+              border: 1px solid red;
+            }
+        </style>
     </footer>
-    
-
-    <script src="{% static 'plantilla/blogy/js/bootstrap.bundle.min.js' %}"></script>
-    <script src="{% static 'plantilla/blogy/js/tiny-slider.js' %}"></script>
-
-
-    <style>
-        .error {
-          color: red;
-          font-weight: bold;
-        }
-        .form-control.error {
-          border: 1px solid red;
-        }
-      </style>
-
 </body>
 </html>

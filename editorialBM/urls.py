@@ -19,9 +19,9 @@ from django.urls import path,include
 
 from django.views.generic import RedirectView
 from django.urls import reverse_lazy
-
+from Aplicaciones.Libros.views_api import LibrosAPI
 urlpatterns = [
-    path('', RedirectView.as_view(url=reverse_lazy('inicioau'), permanent=False)), 
+    path('', RedirectView.as_view(url=reverse_lazy('investigador'), permanent=False)), 
     path('admin/', admin.site.urls),
     path('',include('Aplicaciones.Autor.urls')),
     path('',include('Aplicaciones.Libreria.urls')),
@@ -30,6 +30,6 @@ urlpatterns = [
     path('',include('Aplicaciones.Jugador.urls')),
     path('',include('Aplicaciones.Equipo.urls')),
     path('',include('Aplicaciones.Libros.urls')),
-
+    path('api/libros/', LibrosAPI.as_view()),
 
 ]
